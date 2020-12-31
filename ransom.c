@@ -36,6 +36,7 @@ void checkMagazine(int magazine_count, char** magazine, int note_count, char** n
         }
         if (!is_found){
             printf("No");
+            free (is_magazine_used);
             return;
         }
     }
