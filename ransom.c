@@ -18,23 +18,26 @@ char** split_string(char*);
 
 // Complete the checkMagazine function below.
 void checkMagazine(int magazine_count, char** magazine, int note_count, char** note) {
-    
+    if (magazine_count < note_count){
+        printf("No");
+        return;
+    }
     int *is_magazine_used = (int*)malloc(sizeof(int)*magazine_count);
     if (is_magazine_used == NULL) exit(1);
 
-    for (int i = 0; i < magazine_count; i++){
+    for (int i = 0; i < magazine_count; i++) {
         is_magazine_used[i] = FALSE;
     }
     for (int i = 0; i < note_count; i++) {
         int is_found = FALSE;
         for (int j = 0; j < magazine_count; j++) {
-            if (!strcmp(note[i], magazine[j]) && is_magazine_used[j] == 0){
+            if (!strcmp(note[i], magazine[j]) && is_magazine_used[j] == 0) {
                 is_magazine_used[j] = TRUE;
                 is_found = TRUE;
                 break;
             }
         }
-        if (!is_found){
+        if (!is_found) {
             printf("No");
             free (is_magazine_used);
             return;
